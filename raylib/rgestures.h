@@ -266,7 +266,10 @@ void ProcessGestureEvent(GestureEvent event)
 {
     // Reset required variables
     GESTURES.Touch.pointCount = event.pointCount;      // Required on UpdateGestures()
-
+    if (GESTURES.Touch.pointCount == 0 && GESTURES.current != GESTURE_NONE)
+    {
+        GESTURES.current = GESTURE_NONE;
+    }
     if (GESTURES.Touch.pointCount == 1)     // One touch point
     {
         if (event.touchAction == TOUCH_ACTION_DOWN)
